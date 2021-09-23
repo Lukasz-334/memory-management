@@ -18,6 +18,8 @@ public:
 
 int main(int argc, char* argv[])
 {
+    argc = 2;
+    
     if(argc != 2)
     {
         cerr << "You need to pass 1 argument" << endl;
