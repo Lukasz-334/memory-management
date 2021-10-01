@@ -4,7 +4,7 @@ project(memory_management)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_compile_options(-Wall -Wextra -pedantic -pedantic-errors -g)
+add_compile_options(-Wall -Wextra -pedantic -pedantic -errors -g -O3)
 
 file(GLOB SOURCES *.cpp)
 
