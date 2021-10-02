@@ -1,18 +1,30 @@
 #pragma once
-
 #include <iostream>
+#include <memory>
 
-template<typename T>
-
-class Unique_ptr{
+template <class T>
+class unique_ptr {
 public:
+    unique_ptr() = default;
 
+    unique_ptr(std::nullptr_t)
+        : ptr(nullptr){};
 
-Unique_ptr()
+    explicit unique_ptr(T* wsk)
+        : ptr(wsk){};
 
-*T;
+    ~unique_ptr() {
+        delete ptr;
+    }
 
+    T* operator->() {
+        return ptr;
+    }
 
+    T* get() const noexcept {
+        return ptr;
+    }
 
+private:
+    T* ptr;
 };
-
