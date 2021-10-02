@@ -25,6 +25,12 @@ public:
         return ptr;
     }
 
+    T* release() noexcept {
+        T* cptr = ptr;
+        ptr = nullptr;
+        return cptr;
+    }
+
 private:
     T* ptr;
 };
