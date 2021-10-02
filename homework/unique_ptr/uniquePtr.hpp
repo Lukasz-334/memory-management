@@ -26,9 +26,22 @@ public:
     }
 
     T* release() noexcept {
-        T* cptr = ptr;
+        T* current_ptr = ptr;
         ptr = nullptr;
-        return cptr;
+        return current_ptr;
+    }
+
+    void reset(T* current_ptr) noexcept {
+        T* old_ptr = ptr;
+        ptr = current_ptr;
+        if (old_ptr) {
+            delete old_ptr;
+        }
+    }
+
+    void reset() {
+        delete ptr;
+        ptr = nullptr;
     }
 
 private:
