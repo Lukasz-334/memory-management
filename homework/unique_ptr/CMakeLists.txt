@@ -22,11 +22,11 @@ set(FLAGS
     -Werror
 )
 
-add_executable(uniq main.cpp uniquePtr.hpp)
+add_executable(uniq main.cpp Point.cpp uniquePtr.hpp)
 target_compile_options(uniq PRIVATE ${FLAGS})
 target_compile_features(uniq PRIVATE cxx_std_20)
 
 
-add_executable(test-gt test.cpp uniquePtr.hpp)
+add_executable(test-gt test.cpp Point.cpp uniquePtr.hpp)
 target_link_libraries(test-gt gtest_main)
 add_test(NAME example_test COMMAND example)
