@@ -11,7 +11,32 @@ public:
         : ptr(nullptr){};
 
     explicit unique_ptr(T* wsk)
-        : ptr(wsk){};
+        : ptr(wsk){
+
+          };
+
+    unique_ptr(const unique_ptr& ptr) = delete;
+
+    unique_ptr(unique_ptr&& moved_ptr) {
+        ptr = moved_ptr.ptr;
+        moved_ptr.ptr = nullptr;
+    }
+
+ 
+    unique_ptr& operator=(const unique_ptr& moved_ptr)= delete;
+
+    unique_ptr& operator=(unique_ptr&& moved_ptr) {
+        if (&moved_ptr != this) {
+            if (ptr) {
+                delete ptr;
+            }
+            if (moved_ptr.ptr) {
+                ptr = moved_ptr.ptr;
+                moved_ptr.ptr = nullptr;
+            }
+        }
+        return *this;
+    }
 
     ~unique_ptr() {
         delete ptr;
@@ -45,5 +70,5 @@ public:
     }
 
 private:
-    T* ptr;
+    T* ptr = nullptr;
 };
