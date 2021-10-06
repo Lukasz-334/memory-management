@@ -72,3 +72,12 @@ TEST(MoveAssignmentOperatorTest, dataTransfer ){
 
 
 }
+
+TEST(OperatorShellingTest,ReturnsTheObjectOwned){
+
+unique_ptr<Point> uptr(new Point(37, 71));
+Point & point = *uptr;
+
+ASSERT_EQ(point.getX(),37);
+
+}

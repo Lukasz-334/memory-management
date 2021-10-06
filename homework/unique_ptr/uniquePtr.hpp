@@ -22,8 +22,7 @@ public:
         moved_ptr.ptr = nullptr;
     }
 
- 
-    unique_ptr& operator=(const unique_ptr& moved_ptr)= delete;
+    unique_ptr& operator=(const unique_ptr& moved_ptr) = delete;
 
     unique_ptr& operator=(unique_ptr&& moved_ptr) {
         if (&moved_ptr != this) {
@@ -40,6 +39,10 @@ public:
 
     ~unique_ptr() {
         delete ptr;
+    }
+
+    T& operator*(){
+        return *ptr;
     }
 
     T* operator->() {
